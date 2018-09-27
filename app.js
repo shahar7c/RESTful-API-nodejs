@@ -6,18 +6,21 @@ const mongoose = require('mongoose');
 
 const productsRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 mongoose.connect(
     'mongodb+srv://shahar:' + 
     process.env.MONGO_ATLAS_PW + 
     '@node-rest-shop-br35i.mongodb.net/test?retryWrites=true',
     {
-        useNewUrlParser:true
+        useNewUrlParser:true,
+        useCreateIndex: true
     }
 );
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -36,6 +39,7 @@ app.use((req, res, next) => {
 //Routes Should handle requests
 app.use('/products', productsRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

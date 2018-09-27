@@ -15,10 +15,13 @@
   "author": "Shahar Carmi",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.17",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "multer": "^1.3.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
